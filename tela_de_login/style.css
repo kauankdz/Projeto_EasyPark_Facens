@@ -1,74 +1,84 @@
+/* Estilos gerais do corpo */
 body {
-    background-color: #2F2F2F;
-    color: #fff;
+    background-color: #2F2F2F; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto branco */
 }
 
+/* Estilo do contêiner principal */
 .container {
-    margin-top: 7%;
+    margin-top: 7%; /* Espaço superior para o contêiner */
 }
 
+/* Estilo do cartão */
 .card {
-    background-color: #2F2F2F;
-    border: none;
-    
+    background-color: #2F2F2F; /* Cor de fundo do cartão */
+    border: none; /* Remove a borda do cartão */
 }
 
+/* Estilo do cabeçalho do cartão */
 .card-header {
-    background-color: #111;
-    border-bottom: none;
-    text-align: center;
+    background-color: #111; /* Cor de fundo do cabeçalho do cartão */
+    border-bottom: none; /* Remove a borda inferior */
+    text-align: center; /* Centraliza o texto */
 }
 
+/* Estilo dos campos de entrada */
 .form-control {
-    
-    color: #000000;
-    border: none;
-    border-radius: 12px;
+    color: #000000; /* Cor do texto dentro do campo */
+    border: none; /* Remove a borda do campo */
+    border-radius: 12px; /* Arredonda os cantos do campo */
 }
 
+/* Estilo do campo em foco */
 .form-control:focus {
-    background-color: #dfdede;
-    color: #000000;
+    background-color: #dfdede; /* Cor de fundo ao focar no campo */
+    color: #000000; /* Cor do texto ao focar no campo */
 }
 
+/* Estilo do botão primário */
 .btn-primary {
-    background-color: #3C3C3C;
-    border: none;
-    border-radius: 12px;
-    
+    background-color: #3C3C3C; /* Cor de fundo do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 12px; /* Arredonda os cantos do botão */
 }
 
+/* Estilo do botão primário ao passar o mouse */
 .btn-primary:hover {
-    background-color: #38B6FF;
+    background-color: #38B6FF; /* Cor de fundo ao passar o mouse */
 }
 
+/* Estilo dos links */
 .btn-link {
-    color: #38B6FF;
+    color: #38B6FF; /* Cor do texto do link */
 }
 
-.navbar{
-    background-color: #3C3C3C !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Estilo da barra de navegação */
+.navbar {
+    background-color: #3C3C3C !important; /* Cor de fundo da navbar */
+    display: flex; /* Usa Flexbox para alinhar itens */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
 }
 
+/* Estilo do ícone de texto clicável */
 .input-group-text {
-    cursor: pointer;
-    border-radius:12px;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    border-radius: 12px; /* Arredonda os cantos do ícone */
 }
 
+/* Estilo do logotipo na navbar */
 .navbar-logo {
-    width: 265px;    /* Aumente conforme necessário */
-    height: auto;  /* Mantém a proporção da imagem */
-    max-height: 135px; /* Define um limite de altura para evitar aumentar a navbar */
-    margin-top: -9%;
+    width: 265px; /* Largura do logotipo */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 135px; /* Define um limite de altura para o logotipo */
+    margin-top: -9%; /* Ajusta a posição do logotipo */
 }
 
+/* Estilo da navbar fixa */
 .fixed-navbar {
     height: 111px; /* Define uma altura fixa para a navbar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f8f9fa; /* Opcional: para visualização da navbar */
+    display: flex; /* Usa Flexbox para alinhar itens */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Alinha os itens verticalmente */
+    background-color: #f8f9fa; /* Cor de fundo da navbar (opcional) */
 }

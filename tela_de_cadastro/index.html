@@ -3,129 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário Organizado</title>
+    <title>Cadastre-se</title>
     <!-- Bootstrap CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
     <!-- Arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Just an image -->
-<nav class="navbar navbar-light fixed-navbar ">
-    <a class="navbar-brand mx-auto" href="#">
-      <img src="img/easy01.png" width="100" height="65" alt="" class="navbar-logo">
-    </a>
-  </nav>
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card">
-                <div class="card-body">
-                    <form>
-                           <!-- Primeira linha: Nome completo ocupa toda a linha -->
-                           <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <label for="firstName">Seu nome</label>
-                                <input type="text" class="form-control" id="seuNome" placeholder="Seu nome"pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+">
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-navbar">
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="img/easy01.png" alt="Logo" class="navbar-logo">
+        </a>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <!-- Primeira linha: Nome completo ocupa toda a linha -->
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="seuNome">Seu nome</label>
+                                    <input type="text" class="form-control" id="seuNome" placeholder="Seu nome" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+" required>
+                                </div>
                             </div>
-                        </div>
-                        
-                       <!-- Segunda linha: CPF e Telefone lado a lado -->
-                       <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" maxlength="14">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="phone">Telefone</label>
-                            <input type="text" class="form-control" id="phone" placeholder="(00) 00000-0000" maxlength="15">
-                        </div>
+
+                            <!-- Segunda linha: CPF e Telefone lado a lado -->
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cpf">CPF</label>
+                                    <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone">Telefone</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="(00) 00000-0000" maxlength="15" required>
+                                </div>
+                            </div>
+
+                            <!-- Terceira linha: Email e Senha -->
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputEmail4">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputPassword4">Senha</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="senha" placeholder="Senha" required>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="toggleSenha">
+                                                <i class="fas fa-eye" id="iconOlho"></i>    
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Endereço -->
+                            <div class="form-group mb-3">
+                                <label for="inputAddress">Endereço</label>
+                                <input type="text" class="form-control" id="inputEndereco" placeholder="Parque Esmeralda, 179" required>
+                            </div>
+
+                            <!-- Cidade, Estado e CEP -->
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="inputCity">Cidade</label>
+                                    <input type="text" class="form-control" id="inputCidade" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="inputState">Estado</label>
+                                    <select id="inputEstado" class="form-control" required>
+                                        <option selected>Escolher...</option>
+                                        <!-- Adicione os estados aqui -->
+                                        <option value="SP">São Paulo (SP)</option>
+                                        <!-- Continue com os outros estados... -->
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="inputCep">CEP</label>
+                                    <input type="text" class="form-control" id="inputCep" placeholder="00000-000" maxlength="9" required>
+                                </div>
+                            </div>
+
+                            <!-- Botão de envio -->
+                            <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
+                        </form>
                     </div>
-                        <!-- Segunda linha: Email e Senha -->
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="inputPassword4">Senha</label>
-                                <div class="input-group">
-                                <input type="password" class="form-control" id="senha" placeholder="Senha">
-                                <div class="input-group-append">
-                                <span class="input-group-text" id="toggleSenha">
-                                    <i class="fas fa-eye" id="iconOlho"></i>
-                                </span>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-
-                        <!-- Terceira linha: Endereço -->
-                        <div class="form-group mb-3">
-                            <label for="inputAddress">Endereço</label>
-                            <input type="text" class="form-control" id="inputEndereco" placeholder="Parque esmeralda, 179">
-                        </div>
-
-                        <!-- Quarta linha: Cidade, Estado e CEP -->
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="inputCity">Cidade</label>
-                                <input type="text" class="form-control" id="inputCidade" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="inputState">Estado</label>
-                                <select id="inputEstado" class="form-control">
-                                    <option selected>Escolher...</option>
-                                    <option value="AC">Acre (AC)</option>
-                                    <option value="AL">Alagoas (AL)</option>
-                                    <option value="AP">Amapá (AP)</option>
-                                    <option value="AM">Amazonas (AM)</option>
-                                    <option value="BA">Bahia (BA)</option>
-                                    <option value="CE">Ceará (CE)</option>
-                                    <option value="DF">Distrito Federal (DF)</option>
-                                    <option value="ES">Espírito Santo (ES)</option>
-                                    <option value="GO">Goiás (GO)</option>
-                                    <option value="MA">Maranhão (MA)</option>
-                                    <option value="MT">Mato Grosso (MT)</option>
-                                    <option value="MS">Mato Grosso do Sul (MS)</option>
-                                    <option value="MG">Minas Gerais (MG)</option>
-                                    <option value="PA">Pará (PA)</option>
-                                    <option value="PB">Paraíba (PB)</option>
-                                    <option value="PR">Paraná (PR)</option>
-                                    <option value="PE">Pernambuco (PE)</option>
-                                    <option value="PI">Piauí (PI)</option>
-                                    <option value="RJ">Rio de Janeiro (RJ)</option>
-                                    <option value="RN">Rio Grande do Norte (RN)</option>
-                                    <option value="RS">Rio Grande do Sul (RS)</option>
-                                    <option value="RO">Rondônia (RO)</option>
-                                    <option value="RR">Roraima (RR)</option>
-                                    <option value="SC">Santa Catarina (SC)</option>
-                                    <option value="SP">São Paulo (SP)</option>
-                                    <option value="SE">Sergipe (SE)</option>
-                                    <option value="TO">Tocantins (TO)</option>
-
-                                </select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="inputCep">CEP</label>
-                                <input type="text" class="form-control" id="inputCep" placeholder="00000-000" maxlength="9">
-                            </div>
-                        </div>
-
-                        <!-- Botão de envio -->
-                        <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Bootstrap JS e dependências -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- Arquivo JS externo -->
-<script src="scripts.js"></script>
+    <!-- Bootstrap JS e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+
+
+    <!-- Arquivo JS externo -->
+    <script src="scripts.js"></script>
 </body>
 </html>
+                        
