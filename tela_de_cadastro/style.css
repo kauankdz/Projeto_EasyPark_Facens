@@ -1,83 +1,72 @@
 /* Estilos personalizados para o formulário */
-body{
-    background-color: #2F2F2F;
-    color: #fff;
+
+/* Define a cor de fundo e a cor do texto do corpo */
+body {
+    background-color: #2F2F2F; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto branca */
 }
 
+/* Estilos do cartão que contém o formulário */
 .card {
-    background-color:#2F2F2F;
-   border: none; /* Arredonda os cantos do card */
+    background-color: #2F2F2F; /* Cor de fundo do cartão */
+    border: none; /* Remove a borda do cartão */
 }
 
+/* Estilos do corpo do cartão */
 .card-body {
-    padding: 2rem; /* Aumenta o padding interno do card */
+    padding: 2rem; /* Espaçamento interno do corpo do cartão */
 }
 
+/* Estilos para os campos de entrada */
 .form-control {
-    color: #000000;
-    border: none;
-    border-radius: 12px;/* Arredonda os cantos dos inputs */
+    color: #000; /* Cor do texto no campo */
+    border: none; /* Remove a borda do campo */
+    border-radius: 12px; /* Arredonda os cantos do campo */
 }
 
-/* Adiciona espaçamento entre as linhas */
+/* Margem inferior para cada linha do formulário */
 .form-row {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Espaçamento entre as linhas do formulário */
 }
 
-.form-group {
-    margin-bottom: 1.5rem; /* Dá mais espaçamento entre os grupos */
-}
-
+/* Estilos do botão de envio */
 button[type="submit"] {
-    margin-top: 1.5rem;
-    padding: 0.75rem;
-    font-size: 1rem;
+    margin-top: 1.5rem; /* Espaçamento superior do botão */
+    padding: 0.75rem; /* Espaçamento interno do botão */
+    font-size: 1rem; /* Tamanho da fonte do botão */
 }
+
+/* Estilos do botão primário */
 .btn-primary {
-    background-color: #3C3C3C;
-    border: none;
-    border-radius: 12px;
-    
+    background-color: #3C3C3C; /* Cor de fundo do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 12px; /* Arredonda os cantos do botão */
 }
 
+/* Estilos para o estado de hover do botão primário */
 .btn-primary:hover {
-    background-color: #38B6FF;
+    background-color: #38B6FF; /* Cor de fundo ao passar o mouse */
 }
 
-.btn-link {
-    color: #38B6FF;
-}
-/* Responsividade */
-@media (max-width: 768px) {
-    .card-body {
-        padding: 1.5rem;
-    }
-    .form-control {
-        margin-bottom: 1rem;
-    }
-}
+/* Estilos do logotipo da navbar */
 .navbar-logo {
-    width: 265px;    /* Aumente conforme necessário */
-    height: auto;  /* Mantém a proporção da imagem */
-    max-height: 135px; /* Define um limite de altura para evitar aumentar a navbar */
-    margin-top: -9%;
+    width: 265px; /* Largura do logotipo */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 135px; /* Limite máximo de altura para o logotipo */
+    margin-top: -9%; /* Ajuste para posicionamento vertical do logotipo */
 }
 
+/* Estilos da navbar fixa */
 .fixed-navbar {
-    height: 111px; /* Define uma altura fixa para a navbar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f8f9fa; /* Opcional: para visualização da navbar */
-}
-.navbar{
-    background-color: #3C3C3C !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 111px; /* Altura fixa da navbar */
+    display: flex; /* Usando flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    background-color: #3C3C3C; /* Cor de fundo da navbar */
 }
 
+/* Estilos do texto que pode ser clicável (exibir/ocultar senha) */
 .input-group-text {
-    cursor: pointer;
-    border-radius:12px;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    border-radius: 12px; /* Arredonda os cantos do ícone */
 }

@@ -3,51 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Easy Park - Login</title>
-       
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Link para o CSS do Bootstrap -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o CSS personalizado -->
+    <title>Easy Park - Login</title> <!-- Título da página que aparece na aba do navegador -->
 </head>
 <body>
-<!-- Just an image -->
-<nav class="navbar navbar-light fixed-navbar ">
-    <a class="navbar-brand mx-auto" href="#">
-      <img src="img/easy01.png" width="100" height="65" alt="" class="navbar-logo">
-    </a>
-  </nav>
+    <!-- Navbar fixa no topo da página -->
+    <nav class="navbar navbar-light fixed-navbar ">
+        <a class="navbar-brand mx-auto" href="#"> <!-- Marca do navbar, centralizada -->
+            <img src="img/easy01.png" width="100" height="65" alt="" class="navbar-logo"> <!-- Logotipo da aplicação -->
+        </a>
+    </nav>
+    
+    <!-- Container principal do formulário -->
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="card">
-                   <!-- <div class="card-header">
-                        <img src="img/easy01.png" alt="" width="180">
-                        
-                    </div>-->
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="email">Seu e-mail</label>
-                                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+        <div class="row justify-content-center"> <!-- Alinha o conteúdo no centro da tela -->
+            <div class="col-md-5"> <!-- Define a largura da coluna para dispositivos médios -->
+                <div class="card"> <!-- Cartão para estilizar o formulário -->
+                    <div class="card-body"> <!-- Corpo do cartão -->
+                        <form> <!-- Início do formulário -->
+                            <div class="form-group"> <!-- Grupo de formulários para o campo de e-mail -->
+                                <label for="email">Seu e-mail</label> <!-- Rótulo para o campo de e-mail -->
+                                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail"> <!-- Campo de entrada para e-mail -->
                             </div>
-                    
-                            <div class="form-group">
-                                <label for="password">Sua senha</label>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="toggleSenha">
-                                            <i class="fas fa-eye" id="iconOlho"></i>
+                            <div class="form-group"> <!-- Grupo de formulários para o campo de senha -->
+                                <label for="password">Sua senha</label> <!-- Rótulo para o campo de senha -->
+                                <div class="input-group"> <!-- Grupo de entrada para permitir ícones ou botões ao lado -->
+                                    <input type="password" class="form-control" id="password" placeholder="Digite sua senha"> <!-- Campo de entrada para senha -->
+                                    <div class="input-group-append"> <!-- Adiciona o ícone ao lado do campo de senha -->
+                                        <span class="input-group-text" id="toggleSenha"> <!-- Elemento clicável para alternar a visualização da senha -->
+                                            <i class="fas fa-eye" id="iconOlho"></i> <!-- Ícone para mostrar/ocultar senha -->
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button> <!-- Botão para enviar o formulário -->
                         </form>
-                        <div class="text-center mt-3">
-                            <a href="#" class="btn btn-link">Esqueci minha senha</a>
+                        <div class="text-center mt-3"> <!-- Centraliza o texto -->
+                            <a href="#" class="btn btn-link">Esqueci minha senha</a> <!-- Link para recuperação de senha -->
                         </div>
-                        <div class="text-center mt-2">
-                            Não tem conta? <a href="/tela_de_cadastro/index.html" class="btn btn-link">Cadastre-se</a>
+                        <div class="text-center mt-2"> <!-- Centraliza o texto -->
+                            Não tem conta? <a href="/tela_de_cadastro/index.html" class="btn btn-link">Cadastre-se</a> <!-- Link para página de cadastro -->
                         </div>
                     </div>
                 </div>
@@ -55,10 +51,11 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
-    <script src="scripts.js"></script>
+    <!-- Scripts JS necessários -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <!-- jQuery slim -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> <!-- Popper.js para gerenciamento de popups -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- JS do Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script> <!-- Font Awesome para ícones -->
+    <script src="scripts.js"></script> <!-- Script personalizado -->
 </body>
 </html>
