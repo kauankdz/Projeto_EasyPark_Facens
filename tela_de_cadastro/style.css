@@ -47,6 +47,12 @@ button[type="submit"] {
 .btn-primary:hover {
     background-color: #38B6FF; /* Cor de fundo ao passar o mouse */
 }
+.navbar {
+    background-color: #3C3C3C !important; /* Cor de fundo da navbar */
+    display: flex; /* Usando flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
 
 /* Estilos do logotipo da navbar */
 .navbar-logo {

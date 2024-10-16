@@ -80,5 +80,5 @@ body {
     display: flex; /* Usando flexbox para layout */
     justify-content: center; /* Centraliza os itens horizontalmente */
     align-items: center; /* Centraliza os itens verticalmente */
-    background-color: #f8f9fa; /* Cor de fundo opcional para visualização */
+    background-color: #3C3C3C; /* Cor de fundo opcional para visualização */
 }
