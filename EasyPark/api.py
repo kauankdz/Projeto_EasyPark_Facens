@@ -63,7 +63,7 @@ class mySQL:
 
     def registerUser(self, id_registro: int, nome: str, cpf: str, telefone: str, estado: str, cidade: str, cep: str,
                      rua: str, numero: int, data_nascimento: str):
-        insertUser = f'INSERT INTO {self.table} (id_registro, nome, cpf, telefone, estado, cidade, cep, rua, numero, data_nascimento) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+        insertUser = f'INSERT INTO {self.table} (id_registro, nome, cpf, telefone, estado, cidade, cep, rua, numero, data_nascimento)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
         values = (id_registro, nome, cpf, telefone, estado, cidade, cep, rua, numero, data_nascimento)
         self.cursor.execute(insertUser, values)
         self.connection.commit()

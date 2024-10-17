@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 
 # Rota para a tela de login
-@app.route('/login', methods=['GET', 'POST'])
+@app.route(rule='/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         # Capture os dados de login do formulário
@@ -22,7 +22,7 @@ def login():
 
         acesso, idReg = verificar(email=email, senha=password)
 
-        print(idReg)    
+        print(idReg)
 
         if acesso:
             # Redireciona para a tela inicial após o login
@@ -34,7 +34,7 @@ def login():
 
 
 # Rota para a tela de cadastro
-@app.route('/cadastro', methods=['GET', 'POST'])
+@app.route(rule='/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
         # Capture os dados de cadastro do formulário
