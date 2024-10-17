@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Link para o CSS do Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleLogin.css') }}"> <!-- Link para o CSS personalizado -->
+    <title>EasyPark - Login</title> <!-- Título da página que aparece na aba do navegador -->
+</head>
+<body>
+    <header>
+    <!-- Navbar fixa no topo da página -->
+    <nav class="navbar navbar-light fixed-navbar ">
+        <a class="navbar-brand mx-auto" href="#"> <!-- Marca do navbar, centralizada -->
+            <img src="{{ url_for('static', filename='imgs/easy01.png') }}" width="100" height="65" alt="" class="navbar-logo"> <!-- Logotipo da aplicação -->
+        </a>
+    </nav>
+</header>
+    <main>
+    <!-- Container principal do formulário -->
+    <div class="container">
+        <div class="row justify-content-center"> <!-- Alinha o conteúdo no centro da tela -->
+            <div class="col-md-5"> <!-- Define a largura da coluna para dispositivos médios -->
+                <div class="card"> <!-- Cartão para estilizar o formulário -->
+                    <div class="card-body"> <!-- Corpo do cartão -->
+                        <form action="{{ url_for('login') }}" method="POST"> <!-- Início do formulário -->
+                            <div class="form-group"> <!-- Grupo de formulários para o campo de e-mail -->
+                                <label for="email">Seu e-mail</label> <!-- Rótulo para o campo de e-mail -->
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail"> <!-- Campo de entrada para e-mail -->
+                            </div>
+                            <div class="form-group"> <!-- Grupo de formulários para o campo de senha -->
+                                <label for="password">Sua senha</label> <!-- Rótulo para o campo de senha -->
+                                <div class="input-group"> <!-- Grupo de entrada para permitir ícones ou botões ao lado -->
+                                    <input type="password" class="form-control" id="password" name="senha" placeholder="Digite sua senha"> <!-- Campo de entrada para senha -->
+                                    <div class="input-group-append"> <!-- Adiciona o ícone ao lado do campo de senha -->
+                                        <span class="input-group-text" id="toggleSenha"> <!-- Elemento clicável para alternar a visualização da senha -->
+                                            <i class="fas fa-eye" id="iconOlho"></i> <!-- Ícone para mostrar/ocultar senha -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Entrar</button> <!-- Botão para enviar o formulário -->
+                        </form>
+                        <div class="text-center mt-3"> <!-- Centraliza o texto -->
+                            <a href="#" class="btn btn-link">Esqueci minha senha</a> <!-- Link para recuperação de senha -->
+                        </div>
+                        <div class="text-center mt-2"> <!-- Centraliza o texto -->
+                            Não tem conta? <a href="{{ url_for('cadastro') }}" class="btn btn-link">Cadastre-se</a> <!-- Link para página de cadastro -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <!-- Scripts JS necessários -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> <!-- jQuery slim -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> <!-- Popper.js para gerenciamento de popups -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- JS do Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script> <!-- Font Awesome para ícones -->
+    <script src="{{ url_for('static', filename='js/scriptsLogin.js') }}"></script> <!-- Script personalizado -->
+</body>
+</html>
