@@ -1,0 +1,156 @@
+html, body {
+    background-color: #292828; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto branca */
+    height: 100%
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos da navbar */
+.navbar {
+    background-color: #3C3C3C !important; /* Cor de fundo da navbar */
+    display: flex; /* Usando flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    color: #fff;
+}
+
+/* Estilos do logotipo da navbar */
+.navbar-logo {
+    width: 265px; /* Largura do logotipo */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 135px; /* Limite máximo de altura para o logotipo */
+    margin-top: -9%; /* Ajuste para posicionamento vertical do logotipo */
+    margin-right: 15px;
+}
+
+/* Estilos da navbar fixa */
+.fixed-navbar {
+    height: 111px; /* Altura fixa da navbar */
+    display: flex; /* Usando flexbox para layout */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    background-color: #3C3C3C; /* Cor de fundo opcional para visualização */
+}
+
+/* Estilos gerais para os links da navbar */
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* Cor original dos links */
+    font-size: 1rem;
+    padding: 0.5rem 1rem; /* Espaçamento para os links */
+    transition: color 0.3s ease, border-bottom 0.3s ease; /* Transição suave para cor e sublinha */
+    border-bottom: 2px solid transparent; /* Sublinha invisível inicialmente */
+    margin-top: 8%;
+}
+    .navbar-nav .nav-item {
+        margin-bottom: 10px; /* Adiciona espaçamento entre os itens no modo colapsado */
+    }
+    .navbar-nav .nav-link:hover {
+        color: #38B6FF; /* Cor de destaque ao passar o mouse */
+        border-bottom: 2px solid #38B6FF; /* Sublinha ao passar o mouse */
+    }
+    
+    /* Efeito de animação ao clicar */
+    .navbar-nav .nav-link:active {
+        transform: scale(0.95); /* Reduz ligeiramente o tamanho ao clicar */
+        transition: transform 0.1s; /* Suaviza o efeito de clique */
+    }
+    
+
+
+
+/* Estilo para telas maiores */
+@media (min-width: 992px) {
+    .navbar-nav {
+        display: flex;
+        justify-content: space-around; /* Distribui os links com espaçamento igual */
+        width: 100%; /* Garante que os links ocupem todo o espaço horizontal */
+    }
+}
+
+/* Estilo para telas menores */
+@media (max-width: 991px) {
+    .navbar-nav {
+        display: block; /* Exibe os links verticalmente em telas menores */
+        text-align: center; /* Centraliza os links */
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px; /* Espaçamento entre os links no modo colapsado */
+    }
+}
+/* Centraliza o conteúdo da página */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    flex-grow: 1;
+}
+
+/* Ajustes no botão */
+.btn-primary {
+    background-color: #3C3C3C;
+    border-radius: 12px;
+    width: 100%; /* Largura 100% para ocupar todo o espaço disponível */
+    max-width: 535px; /* Define a largura máxima dos botões */
+    border-color: #2F2F2F;
+}
+
+.btn-primary:hover {
+    background-color: #38B6FF;
+    border-color: #2F2F2F;
+}
+
+/* Estilo da div que contém o mapa */
+.mapa-container {
+    margin: 0 auto;
+    width: 100%; /* O contêiner ocupa 100% da largura disponível */
+    max-width: 535px; /* Largura máxima do mapa */
+}
+
+.mapa-container iframe {
+    width: 100%; /* Mapa ocupa 100% da largura do contêiner */
+    height: 300px; /* Altura do mapa */
+    border-radius: 15px;
+}
+
+/* Ajuste de responsividade para telas menores */
+@media (max-width: 768px) {
+    .btn-primary {
+        width: 100%; /* Botões ocupam 100% da largura em telas menores */
+    }
+}
+
+
+.footer {
+    background-color: #3C3C3C; /* Cor de fundo do footer */
+    color: white; /* Cor do texto */
+    padding: 0.5rem 0; /* Ajustado para diminuir a altura do footer */
+    position: fixed;
+    bottom: 0;
+    width: 100%; /* Largura total do footer */
+/*    margin-top: 5rem; /* Espaço acima do footer */
+     /* Removido height: 0%; */
+}
+
+.footer .container {
+    max-width: 600px; /* Largura máxima do conteúdo do footer */
+    margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+.footer .social-icons {
+    margin: 1rem 0; /* Espaçamento entre os ícones sociais */
+}
+
+.social-icon {
+    margin: 0 10px; /* Espaçamento entre os ícones */
+}
+
+.social-icon img {
+    width: 30px; /* Largura dos ícones sociais */
+    height: auto; /* Mantém a proporção */
+}
