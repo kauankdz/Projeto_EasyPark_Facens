@@ -1,5 +1,12 @@
-from api import mySQL
+from importlib.metadata import files
 
+from api import mySQL
+import os
+
+path = os.getcwd()
+
+# _____________________________________________________________________________________________________________________#
+# Código feito apenas para resetar as tabelas nos casos de teste.
 if __name__ == '__main__':
     registro = mySQL(table='registros')
     usuarios = mySQL(table='usuarios')
@@ -7,8 +14,8 @@ if __name__ == '__main__':
     carros = mySQL(table='carros')
     usuario_carro = mySQL(table='usuario_carro')
 
-    usuario_carro._delete()
-    carros._delete()
-    estacionamentos._delete()
-    usuarios._delete()
-    registro._delete()
+    usuario_carro.__delete()
+    carros.__delete()
+    estacionamentos.__delete()
+    usuarios.__delete()
+    registro.__delete()

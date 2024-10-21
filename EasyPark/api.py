@@ -4,9 +4,11 @@ from decimal import Decimal
 
 import mysql.connector
 
-
+# Essa classe foi feita para facilitar a obtenção de dados que serão usados no "backend" do EasyPark
 class mySQL:
 
+    #__________________________________________________________________________________________________________________#
+    # Funções básicas do mySQL
     def __init__(self, table: str) -> object:
         self.connection = mysql.connector.connect(host='localhost', user='root', password='senha', database='EasyPark')
         self.cursor = self.connection.cursor()
@@ -48,12 +50,8 @@ class mySQL:
         results = self.__format(self.cursor.fetchall())
         return results
 
-    def insert(self, nome: str, idade: int, data: str):
-        inserirPessoas = f"INSERT INTO {self.table}(nome, idade, data_nasc) VALUES(%s, %s, %s)"
-        valores = (nome, idade, data)
-        self.cursor.execute(inserirPessoas, valores)
-        self.connection.commit()
-
+    #__________________________________________________________________________________________________________________#
+    # Funções específicas das tabelas do EasyPark
     def register(self, email: str, senha: str):
         insertLogin = f'INSERT INTO {self.table} (email, senha, data_criacao) VALUES(%s, %s, %s)'
         values = (email, senha, datetime.now())
@@ -91,12 +89,12 @@ class mySQL:
         self.connection.commit()
         return self.cursor.lastrowid
 
-    def _delete(self):
+    #__________________________________________________________________________________________________________________#
+    # Funções extras para a manutenção e formatação dos dados obtidos.
+    def __delete(self):
         self.cursor.execute(f'DELETE FROM {self.table}')
         self.cursor.execute(f'ALTER TABLE {self.table} AUTO_INCREMENT = 1')
         self.connection.commit()
-
-    # def changePass(self, email: str, chave_de_confirmacao: str):
 
     def __format(self, results: list):
         resultado = []
@@ -110,19 +108,3 @@ class mySQL:
                 columns.append(i)
             resultado.append(tuple(columns))
         return resultado
-
-# if __name__ == '__main__':
-#     tabela = mySQL(connection=conexao, cursor=cursor, table="pessoas")
-#     colunas = []
-#     colunas.append("id")
-#     colunas.append("nome")
-#
-#
-#     # results = tabela.selectCols(columns=colunas)
-#     # results = tabela.selectAll()
-#     # results = tabela.selectAllWhere(where="idade < 18")
-#     # results = tabela.selectColsWhere(columns=colunas, where="idade = 18")
-#     for i in results:
-#         print(i)
-#     cursor.close()
-#     conexao.close()
