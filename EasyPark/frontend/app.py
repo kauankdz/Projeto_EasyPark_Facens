@@ -4,6 +4,7 @@ from functools import wraps
 from api import mySQL
 import webbrowser
 import os
+# ^^ Importações ^^
 
 #______________________________________________________________________________________________________________________#
 # Cria o app e define as suas configurações
@@ -113,4 +114,4 @@ def verificar(email: str, senha: str):
 # Main (não tem muito o que falar dela kkkkk); Ela inicia o servidor do flask e abre um navegador para exibir o site.
 if __name__ == '__main__':
     Timer(interval=1, function=openBrowser).start()
-    app.run(debug=True, use_reloader=False)
+    app.run(host="127.0.0.1", port=5000,debug=True, use_reloader=False)
