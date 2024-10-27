@@ -14,8 +14,8 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-navbar">
-        <a class="navbar-brand mx-auto" href="/tela_de_login/index.html">
-            <img src="/imgs/easy01.png" alt="Logo" class="navbar-logo">
+        <a class="navbar-brand mx-auto" href="/Projeto_EasyPark_Facens-1/tela_de_login/index.html">
+            <img src="/Projeto_EasyPark_Facens-1/imgs/easy01.png" alt="Logo" class="navbar-logo">
         </a>
     </nav>
 
@@ -32,7 +32,7 @@
                                     <input type="text" class="form-control" id="seuNome" placeholder="Seu nome" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+" required>
                                 </div>
                             </div>
-
+    
                             <!-- Segunda linha: CPF e Telefone lado a lado -->
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
@@ -44,7 +44,7 @@
                                     <input type="text" class="form-control" id="phone" placeholder="(00) 00000-0000" maxlength="15" required>
                                 </div>
                             </div>
-
+    
                             <!-- Terceira linha: Email e Senha -->
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
@@ -63,34 +63,72 @@
                                     </div>
                                 </div>
                             </div>
-
+    
+                            <!-- CEP -->
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="inputCep">CEP</label>
+                                    <input type="text" class="form-control" id="inputCep" placeholder="00000-000" maxlength="9" required>
+                                </div>
+                            </div>
+    
                             <!-- Endereço -->
                             <div class="form-group mb-3">
                                 <label for="inputAddress">Endereço</label>
-                                <input type="text" class="form-control" id="inputEndereco" placeholder="Parque Esmeralda, 179" required>
+                                <input type="text" class="form-control" id="inputEndereco" placeholder="Av. Dr. Afonso Vergueiro" required>
                             </div>
-
-                            <!-- Cidade, Estado e CEP -->
+    
+                            <!-- Campo para o número da casa -->
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="inputNumber">Número da Casa</label>
+                                    <input type="text" class="form-control" id="inputNumber" placeholder="100" required>
+                                </div>
+                            </div>
+    
+                            <!-- Cidade e Estado -->
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="inputCity">Cidade</label>
-                                    <input type="text" class="form-control" id="inputCidade" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+" required>
+                                    <input type="text" class="form-control" id="inputCidade" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\s]+" placeholder="Sorocaba"  required>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="inputState">Estado</label>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
                                         <!-- Adicione os estados aqui -->
+                                        <option value="AC">Acre (AC)</option>
+                                        <option value="AL">Alagoas (AL)</option>
+                                        <option value="AP">Amapá (AP)</option>
+                                        <option value="AM">Amazonas (AM)</option>
+                                        <option value="BA">Bahia (BA)</option>
+                                        <option value="CE">Ceará (CE)</option>
+                                        <option value="DF">Distrito Federal (DF)</option>
+                                        <option value="ES">Espírito Santo (ES)</option>
+                                        <option value="GO">Goiás (GO)</option>
+                                        <option value="MA">Maranhão (MA)</option>
+                                        <option value="MT">Mato Grosso (MT)</option>
+                                        <option value="MS">Mato Grosso do Sul (MS)</option>
+                                        <option value="MG">Minas Gerais (MG)</option>
+                                        <option value="PA">Pará (PA)</option>
+                                        <option value="PB">Paraíba (PB)</option>
+                                        <option value="PR">Paraná (PR)</option>
+                                        <option value="PE">Pernambuco (PE)</option>
+                                        <option value="PI">Piauí (PI)</option>
+                                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                                        <option value="RN">Rio Grande do Norte (RN)</option>
+                                        <option value="RS">Rio Grande do Sul (RS)</option>
+                                        <option value="RO">Rondônia (RO)</option>
+                                        <option value="RR">Roraima (RR)</option>
+                                        <option value="SC">Santa Catarina (SC)</option>
                                         <option value="SP">São Paulo (SP)</option>
+                                        <option value="SE">Sergipe (SE)</option>
+                                        <option value="TO">Tocantins (TO)</option>
                                         <!-- Continue com os outros estados... -->
                                     </select>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="inputCep">CEP</label>
-                                    <input type="text" class="form-control" id="inputCep" placeholder="00000-000" maxlength="9" required>
-                                </div>
                             </div>
-
+    
                             <!-- Botão de envio -->
                             <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
                         </form>
@@ -99,6 +137,8 @@
             </div>
         </div>
     </div>
+    
+    
 
     <!-- Bootstrap JS e dependências -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
