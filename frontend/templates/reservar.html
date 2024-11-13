@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Vagas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styleReservar.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-light fixed-navbar">
+            <a class="navbar-brand mx-auto" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='imgs/easy01.png') }}" width="100" height="65" alt="" class="navbar-logo">
+            </a>
+        </nav>
+    </header>
+    <nav class="navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('suas_reservas') }}">Suas Reservas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('reservar') }}">Reservar Vagas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('perfil') }}">Seu Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <!-- Barra de Pesquisa -->
+        <div class="search-bar text-center mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar vagas por localização" onkeyup="filterCards()">
+        </div>
+
+        <!-- Lista de Cards com Vagas -->
+        <div id="vagasContainer" class="row">
+            <!-- Card Exemplo -->
+            <div class="col-md-6 mb-4 vaga-card" data-location="São Paulo">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Estacionamento Centro - Sorocaba</h5>
+                        <p class="card-text">Vagas disponíveis: 10</p>
+                        <p class="card-text">Preço: R$ 5,00/h</p>
+                        <button class="btn btn-primary" onclick="mostrarFormulario(this)">Reservar</button>
+                        <!-- Formulário Oculto para informações do carro -->
+                        <div class="formulario-carro mt-3" style="display: none;">
+                            <h6>Informações do Veículo</h6>
+                            <form onsubmit="event.preventDefault(); abrirModal();">
+                                <div class="form-group">
+                                    <label for="placa">Placa:</label>
+                                    <input type="text" class="form-control" id="placa" placeholder="Placa do veículo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modelo">Modelo:</label>
+                                    <input type="text" class="form-control" id="modelo" placeholder="Modelo do veículo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cor">Cor:</label>
+                                    <input type="text" class="form-control" id="cor" placeholder="Cor do veículo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="marca">Marca:</label>
+                                    <input type="text" class="form-control" id="marca" placeholder="Marca do veículo" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Reservar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Adicionar mais cards com o mesmo layout acima -->
+        </div>
+    </div>
+
+    <!-- Modal para Selecionar Vagas -->
+    <div class="modal fade" id="vagasModal" tabindex="-1" aria-labelledby="vagasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="vagasModalLabel">Selecione sua vaga</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="vagasForm">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vaga 1" id="vaga1">
+                            <label class="form-check-label" for="vaga1">Vaga 1 - Próximo à entrada</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vaga 2" id="vaga2">
+                            <label class="form-check-label" for="vaga2">Vaga 2 - Coberta</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vaga 3" id="vaga3">
+                            <label class="form-check-label" for="vaga3">Vaga 3 - Próximo ao elevador</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vaga 2" id="vaga2">
+                            <label class="form-check-label" for="vaga2">Vaga 4 - Coberta</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vaga 3" id="vaga3">
+                            <label class="form-check-label" for="vaga3">Vaga 5 - Próximo ao elevador</label>
+                        </div>
+                        <!-- Adicione mais vagas conforme necessário -->
+                    </form>
+                </div>
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-primary" onclick="confirmarVagas()">Confirmar Vagas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 EasyPark. Todos os direitos reservados.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" class="social-icon" aria-label="Facebook">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" />
+                </a>
+                <a href="https://web.whatsapp.com/" class="social-icon" aria-label="WhatsApp">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+                </a>
+                <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+                </a>
+            </div>
+            <p>
+                <a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/Projeto_EasyPark_Facens-1/reservar_vagas/reservar.js"></script>
+    <script src="{{ url_for('static', filename='js/scriptsReservar.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ 
+</body>
+</html>
