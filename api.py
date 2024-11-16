@@ -9,17 +9,17 @@ class mySQL:
 
     #__________________________________________________________________________________________________________________#
     # Funções básicas do mySQL
-    def __init__(self, table: str) -> object:
+    def __init__(self, table: str) -> None:
         self.connection = mysql.connector.connect(host='localhost', user='root', password='senha', database='EasyPark')
         self.cursor = self.connection.cursor()
         self.table = table
 
-    def selectAll(self):
+    def selectAll(self) -> list:
         self.cursor.execute(f"Select * from {self.table};")
         results = self.__format(self.cursor.fetchall())
         return results
 
-    def selectCols(self, columns: tuple):
+    def selectCols(self, columns: tuple) -> list:
         select = "SELECT "
         length = len(columns)
         for i, j in zip(columns, range(1, length+1)):
@@ -32,12 +32,12 @@ class mySQL:
         results = self.__format(self.cursor.fetchall())
         return results
 
-    def selectAllWhere(self, where: str):
+    def selectAllWhere(self, where: str) -> list:
         self.cursor.execute(f"Select * from {self.table} WHERE {where};")
         results = self.__format(self.cursor.fetchall())
         return results
 
-    def selectColsWhere(self, columns: tuple, where: str):
+    def selectColsWhere(self, columns: tuple, where: str) -> list:
         select = "SELECT "
         length = len(columns)
         for i, j in zip(columns, range(1, length+1)):
@@ -52,7 +52,7 @@ class mySQL:
 
     #__________________________________________________________________________________________________________________#
     # Funções específicas das tabelas do EasyPark
-    def register(self, email: str, senha: str):
+    def register(self, email: str, senha: str) -> int:
         insertLogin = f'INSERT INTO {self.table} (email, senha, data_criacao) VALUES(%s, %s, %s)'
         values = (email, senha, datetime.now())
         self.cursor.execute(insertLogin, values)
@@ -60,7 +60,7 @@ class mySQL:
         return self.cursor.lastrowid
 
     def registerUser(self, id_registro: int, nome: str, cpf: str, telefone: str, estado: str, cidade: str, cep: str,
-                     rua: str, numero: int, data_nascimento: str):
+                     rua: str, numero: int, data_nascimento: str) -> int:
         insertUser = f'INSERT INTO {self.table} (id_registro, nome, cpf, telefone, estado, cidade, cep, rua, numero, data_nascimento)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
         values = (id_registro, nome, cpf, telefone, estado, cidade, cep, rua, numero, data_nascimento)
         self.cursor.execute(insertUser, values)
@@ -68,21 +68,21 @@ class mySQL:
         return self.cursor.lastrowid
 
     def registerParking(self, id_dono: int, nome: str, estado: str, cidade: str, bairro: str,
-                rua: str, numero: int, vagas_disponiveis: int, total_vagas: int, preco_hora: float, data_criacao: str):
+                rua: str, numero: int, vagas_disponiveis: int, total_vagas: int, preco_hora: float, data_criacao: str) -> int:
         insertParking = f'INSERT INTO {self.table} (id_dono, nome, estado, cidade, bairro, rua, numero, vagas_disponiveis, total_vagas, preco_hora, data_criacao) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
         values = (id_dono, nome, estado, cidade, bairro, rua, numero, vagas_disponiveis, total_vagas, preco_hora, data_criacao)
         self.cursor.execute(insertParking, values)
         self.connection.commit()
         return self.cursor.lastrowid
 
-    def registerCar(self, placa: str, modelo: str, cor: str, marca: str):
+    def registerCar(self, placa: str, modelo: str, cor: str, marca: str) -> int:
         insertCar = f'INSERT INTO {self.table} (placa, modelo, cor, marca) VALUES(%s, %s, %s, %s)'
         values = (placa, modelo, cor, marca)
         self.cursor.execute(insertCar, values)
         self.connection.commit()
         return self.cursor.lastrowid
 
-    def registerOwner(self, id_dono: int, id_carro: int):
+    def registerOwner(self, id_dono: int, id_carro: int) -> int:
         insertOwner = f'INSERT INTO {self.table} (id_usuario, id_carro) VALUES(%s, %s)'
         values = (id_dono, id_carro)
         self.cursor.execute(insertOwner, values)
@@ -94,12 +94,12 @@ class mySQL:
 
     #__________________________________________________________________________________________________________________#
     # Funções extras para a manutenção e formatação dos dados obtidos.
-    def __delete(self):
+    def __delete(self) -> None:
         self.cursor.execute(f'DELETE FROM {self.table}')
         self.cursor.execute(f'ALTER TABLE {self.table} AUTO_INCREMENT = 1')
         self.connection.commit()
 
-    def __format(self, results: list):
+    def __format(self, results: list) -> list:
         resultado = []
         for index, valor in enumerate(results):
             columns = []

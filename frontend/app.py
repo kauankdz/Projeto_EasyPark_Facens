@@ -145,7 +145,7 @@ def logout():
 
 #______________________________________________________________________________________________________________________#
 # Funções para funcionamento do Site
-def openBrowser():
+def openBrowser() -> None:
     webbrowser.get("firefox").open_new("http://127.0.0.1:5000/login")
 
 def verificar(email: str, senha: str):
