@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from threading import Timer
 from functools import wraps
 from api import mySQL
 import webbrowser
 import os
+from mysql.connector.errors import IntegrityError
 # ^^ Importações ^^
 
 #______________________________________________________________________________________________________________________#
@@ -60,9 +61,18 @@ def cadastro():
         rua = request.form.get('rua')
         numero = request.form.get('numero')
 
-        idReg = registro.register(email=email, senha=senha)
-        usuarios.registerUser(id_registro=idReg, nome=nome, cpf=cpf, telefone=phone, estado=estado, cidade=cidade,
-                              cep=cep, rua=rua, numero=numero, data_nascimento="2006-01-03")
+        try:
+            idReg = registro.register(email=email, senha=senha)
+            usuarios.registerUser(id_registro=idReg, nome=nome, cpf=cpf, telefone=phone, estado=estado, cidade=cidade,
+                                  cep=cep, rua=rua, numero=numero, data_nascimento="2006-01-03")
+        except IntegrityError as e:
+            if e.errno == 1062:
+                flash(f'Esse email já está cadastrado no sistema...')
+            else:
+                flash(f'Hove um erro de Integridade de dados do mysql: {e}')
+            return render_template('cadastro.html')
+        except Exception as e:
+            flash(f'Houve algum erro na hora de realizar o login: {e}')
         return redirect(url_for('login'))
     return render_template('cadastro.html')
 

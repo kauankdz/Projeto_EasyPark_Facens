@@ -24,6 +24,14 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="flash-message {{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <br>
                         <form action="{{ url_for('cadastro') }}" method="POST">
                             <!-- Primeira linha: Nome completo ocupa toda a linha -->
                             <div class="form-row">
@@ -131,11 +139,21 @@
                             <!-- Botão de envio -->
                             <button type="submit" class="btn btn-primary btn-block">Cadastre-se</button>
                         </form>
+                        <script>
+                            // Mostrar as mensagens com um efeito de fade
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const flashMessages = document.querySelectorAll('.flash-message');
+                                flashMessages.forEach(message => {
+                                    message.style.display = 'block'; // Exibir mensagem indefinidamente
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap JS e dependências -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

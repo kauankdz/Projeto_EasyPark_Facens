@@ -76,3 +76,8 @@ button[type="submit"] {
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
     border-radius: 12px; /* Arredonda os cantos do ícone */
 }
+
+.flash-message {
+
+    text-align: center;
+}
