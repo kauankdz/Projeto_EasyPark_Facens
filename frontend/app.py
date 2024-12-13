@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from threading import Timer
 from functools import wraps
@@ -116,20 +118,20 @@ def perfil():
 @login_required
 def cadEstacionamento():
     if request.method == 'POST':
-        nome = request.form.get('nome')
-        estado = request.form.get('estado')
-        cidade = request.form.get('cidade')
-        bairro = request.form.get('bairro')
-        rua = request.form.get('rua')
-        numero = request.form.get('numero')
-        vagas_disp = request.form.get('vagas_disp')
-        total_vagas = request.form.get('total_vagas')
-        preco_hora = request.form.get('preco_hora')
-        data_cria = request.form.get('data_cria')
+        nome: str = request.form.get('nome')
+        estado: str = request.form.get('estado')
+        cidade: str = request.form.get('cidade')
+        bairro: str = request.form.get('bairro')
+        rua: str = request.form.get('rua')
+        numero: int = int(request.form.get('numero'))
+        vagas_disp: int = int(request.form.get('vagas_disp'))
+        total_vagas: int = int(request.form.get('total_vagas'))
+        preco_hora: float = float(request.form.get('preco_hora'))
+        data_cria: str = request.form.get('data_cria')
 
-        estacionamentos.registerParking(id_dono=session['id_registro'], nome=nome, estado=estado, cidade=cidade,bairro=bairro,
-                                        rua=rua, numero=numero, vagas_disponiveis=vagas_disp, total_vagas=total_vagas,
-                                        preco_hora=preco_hora, data_criacao=data_cria)
+        estacionamentos.registerParking(id_dono=session['id_registro'], nome=nome, estado=estado, cidade=cidade,
+                                        bairro=bairro, rua=rua, numero=numero, vagas_disponiveis=vagas_disp,
+                                        total_vagas=total_vagas, preco_hora=preco_hora, data_criacao=data_cria)
         return render_template('tela_inicial.html')
     return render_template('cadEstacionamento.html')
 
@@ -158,20 +160,20 @@ def logout():
 def openBrowser() -> None:
     webbrowser.get("firefox").open_new("http://127.0.0.1:5000/login")
 
-def verificar(email: str, senha: str):
+def verificar(email: str, senha: str) -> tuple[bool, int]:
     acesso = False
     cols = ("email", "senha", "id")
-    idReg = 0
+    id_reg = 0
     results = registro.selectCols(columns=cols)
     for valor in results:
         if email == valor[0] and senha == valor[1]:
             acesso = True
-            idReg = valor[2]
+            id_reg = valor[2]
             break
-    return acesso, idReg
+    return acesso, id_reg
 
 #______________________________________________________________________________________________________________________#
-# Main (não tem muito o que falar dela kkkkk); Ela inicia o servidor do flask e abre um navegador para exibir o site.
+# Main (não tem muito o que falar dela haha). Ela inicia o servidor do flask e abre um navegador para exibir o site.
 if __name__ == '__main__':
     Timer(interval=1, function=openBrowser).start()
     app.run(host="127.0.0.1", port=5000,debug=True, use_reloader=False)
