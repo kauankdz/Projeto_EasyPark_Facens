@@ -16,11 +16,11 @@ app.config['PERMANENT_SESSION_LIFETIME'] = 3600
 
 #______________________________________________________________________________________________________________________#
 # Definindo as variáveis das tabelas que podem ser usadas. (de acordo com o mySQL)
-registro = mySQL(table='registros')
-usuarios = mySQL(table='usuarios')
-estacionamentos = mySQL(table='estacionamentos')
-carros = mySQL(table='carros')
-usuario_carro = mySQL(table='usuario_carro')
+registro: mySQL = mySQL(table='registros')
+usuarios: mySQL = mySQL(table='usuarios')
+estacionamentos: mySQL = mySQL(table='estacionamentos')
+carros: mySQL = mySQL(table='carros')
+usuario_carro: mySQL = mySQL(table='usuario_carro')
 
 #______________________________________________________________________________________________________________________#
 # Funções de rotas do Flask
@@ -29,8 +29,8 @@ usuario_carro = mySQL(table='usuario_carro')
 @app.route(rule='/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('senha')
+        email: str = request.form.get('email')
+        password: str = request.form.get('senha')
 
         acesso, idReg = verificar(email=email, senha=password)
 
@@ -49,21 +49,20 @@ def login():
 def cadastro():
     if request.method == 'POST':
         # Captura os dados de cadastro do formulário
-        nome = request.form.get('nome')
-        email = request.form.get('email')
-        senha = request.form.get('senha')
-        cpf = request.form.get('cpf')
-        phone = request.form.get('phone')
-        endereco = request.form.get('endereco')
-        cidade = request.form.get('cidade')
-        estado = request.form.get('estado')
-        cep = request.form.get('cep')
-        rua = request.form.get('rua')
-        numero = request.form.get('numero')
+        nome: str = request.form.get('nome')
+        email: str = request.form.get('email')
+        senha: str = request.form.get('senha')
+        cpf: str = request.form.get('cpf')
+        phone: str = request.form.get('phone')
+        cidade: str = request.form.get('cidade')
+        estado: str = request.form.get('estado')
+        cep: str = request.form.get('cep')
+        rua: str = request.form.get('rua')
+        numero: int = int(request.form.get('numero'))
 
         try:
-            idReg = registro.register(email=email, senha=senha)
-            usuarios.registerUser(id_registro=idReg, nome=nome, cpf=cpf, telefone=phone, estado=estado, cidade=cidade,
+            id_reg: int = registro.register(email=email, senha=senha)
+            usuarios.registerUser(id_registro=id_reg, nome=nome, cpf=cpf, telefone=phone, estado=estado, cidade=cidade,
                                   cep=cep, rua=rua, numero=numero, data_nascimento="2006-01-03")
         except IntegrityError as e:
             if e.errno == 1062:
@@ -98,17 +97,18 @@ def home():
 @app.route('/seu_perfil')
 @login_required
 def perfil():
-    info = usuarios.selectColsWhere(
-        columns=("nome", "telefone", "rua", "numero", "cidade", "estado"),
-        where=f'id_registro = {session['id_registro']}')[0]
-    user_info = {"nome":info[0],
-                 "email":session['email'],
-                 "telefone":info[1],
-                 "rua":info[2],
-                 "numero":info[3],
-                 "cidade":info[4],
-                 "estado":info[5]
-                 }
+    info = usuarios.selectColsWhere(columns=("nome", "telefone", "rua", "numero", "cidade", "estado"),
+                                    where=f'id_registro = {session['id_registro']}')[0]
+    user_info = \
+    {
+        "nome":info[0],
+        "email":session['email'],
+        "telefone":info[1],
+        "rua":info[2],
+        "numero":info[3],
+        "cidade":info[4],
+        "estado":info[5]
+    }
     return render_template(template_name_or_list='perfil.html', usuario=user_info)
 
 # Rota para a tela de cadastro de estacionamento
