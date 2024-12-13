@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from threading import Timer
 from functools import wraps
@@ -10,14 +8,14 @@ from mysql.connector.errors import IntegrityError
 # ^^ Importações ^^
 
 #______________________________________________________________________________________________________________________#
-# Cria o app e define as suas configurações
+# Cria o aplicativo e define as suas configurações
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config['SESSION_PERMANENT'] = False
 app.config['PERMANENT_SESSION_LIFETIME'] = 3600
 
 #______________________________________________________________________________________________________________________#
-# Definindo as variáveis das tabelas que podem ser usadas. (de acordo com o mySQL)
+# Definindo as variáveis das tabelas que podem ser usadas. (conforme o mySQL)
 registro: mySQL = mySQL(table='registros')
 usuarios: mySQL = mySQL(table='usuarios')
 estacionamentos: mySQL = mySQL(table='estacionamentos')
@@ -34,12 +32,12 @@ def login():
         email: str = request.form.get('email')
         password: str = request.form.get('senha')
 
-        acesso, idReg = verificar(email=email, senha=password)
+        acesso, id_reg = verificar(email=email, senha=password)
 
-        # Verifica se email e senha estão corretas
+        # Verifica se e-mail e senha estão corretas
         if acesso:
             session['logged_in'] = True
-            session['id_registro'] = idReg
+            session['id_registro'] = id_reg
             session['email'] = email
             return redirect(url_for('home'))
         else:
@@ -78,8 +76,8 @@ def cadastro():
     return render_template('cadastro.html')
 
 #______________________________________________________________________________________________________________________#
-# Função para proteger rotas que só poderão ser acessadas se o usuário logar.
-# Favor adicionar as rotas à serem protegidas a baixo dela.
+# Função para proteger rotas que só poderão ser acessadas se o usuário conectar-se.
+# Favor adicionar as rotas a serem protegidas a baixo dela.
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -116,7 +114,7 @@ def perfil():
 # Rota para a tela de cadastro de estacionamento
 @app.route('/cadastro-estacionamento', methods=['POST', 'GET'])
 @login_required
-def cadEstacionamento():
+def cad_estacionamento():
     if request.method == 'POST':
         nome: str = request.form.get('nome')
         estado: str = request.form.get('estado')
@@ -157,7 +155,7 @@ def logout():
 
 #______________________________________________________________________________________________________________________#
 # Funções para funcionamento do Site
-def openBrowser() -> None:
+def open_browser() -> None:
     webbrowser.get("firefox").open_new("http://127.0.0.1:5000/login")
 
 def verificar(email: str, senha: str) -> tuple[bool, int]:
@@ -175,5 +173,5 @@ def verificar(email: str, senha: str) -> tuple[bool, int]:
 #______________________________________________________________________________________________________________________#
 # Main (não tem muito o que falar dela haha). Ela inicia o servidor do flask e abre um navegador para exibir o site.
 if __name__ == '__main__':
-    Timer(interval=1, function=openBrowser).start()
+    Timer(interval=1, function=open_browser).start()
     app.run(host="127.0.0.1", port=5000,debug=True, use_reloader=False)
